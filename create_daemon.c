@@ -12,12 +12,12 @@
         }\
     while(0);\
 
-void create_deamon(void);
+void create_daemon(void);
 
 int main(void) {
     time_t t;
     int fd;
-    create_deamon();
+    create_daemon();
     while(1) {
         fd = open("test.txt", O_WRONLY|O_CREAT|O_APPEND, 0644);
         if (fd == -1) ERR_EXIT("open error");
@@ -30,7 +30,7 @@ int main(void) {
     return 0;
 }
 
-void create_deamon(void) {
+void create_daemon(void) {
     pid_t pid;
     pid = fork(); // 父子进程开始分岔，都从这句开始执行
     if (pid == -1) ERR_EXIT("fork error");
